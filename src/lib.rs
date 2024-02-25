@@ -16,7 +16,7 @@ pub fn merge_sort<T: PartialOrd + Clone>(data: &mut [T])
         merge_sort(&mut left);
         merge_sort(&mut right);
 
-        // Copy data back to src
+        // Copy data back to source buffer
         let (mut l, mut r, mut i) = (0, 0, 0);
         while l < left.len() && r < right.len()
         {
@@ -33,7 +33,7 @@ pub fn merge_sort<T: PartialOrd + Clone>(data: &mut [T])
             i += 1;
         }
 
-        // copy any remaining data
+        // Copy any remaining data
         if l < left.len()
         {
             data[i..].clone_from_slice(&left[l..]); 

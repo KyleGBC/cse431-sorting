@@ -24,8 +24,8 @@ fn criterion_benchmark(c: &mut Criterion) {
         // Generate a random seed for this iteration to be shared between each sorting algorithm
         seed = seed_rng.gen::<u64>();
 
-        // Seed an RNG with the shared seed, then run the function on random vectors generated from this seed. 
-        // black_box shouldn't be necessary here since the input is random but I used it anyways just in case.
+        // Seed an RNG with the shared seed, then run the function on random vectors generated from this seed
+        // black_box shouldn't be necessary here since the input is random but I used it anyways just in case
         let mut rng = StdRng::seed_from_u64(seed);
         group.bench_function(BenchmarkId::new("Merge Sort", i), 
         |b| b.iter_batched(
@@ -35,7 +35,7 @@ fn criterion_benchmark(c: &mut Criterion) {
             )
         );
 
-        // Reseed the random number generator between sorting alogorithms so make each iteration of the algorithm random, but still the same across algorithms
+        // Re-seed the random number generator between sorting alogorithms so make each iteration of the algorithm random, but still the same across algorithms
         let mut rng = StdRng::seed_from_u64(seed);
         group.bench_function(BenchmarkId::new("Insertion Sort", i), 
         |b| b.iter_batched( 
